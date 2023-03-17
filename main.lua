@@ -37,9 +37,7 @@ local function findJuegoconelcodo1()
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
 	else
-		--print('Zona correcta, distancia hasta objetivo ' .. distance)
 		local playSound = false
-		local shakeCamera = false
 		if( distance <= margen1 and distance > margen2 ) then
 			print('Sientes una energía poderosa a lo lejos')
 		else
@@ -69,3 +67,62 @@ end
 
 SLASH_FINDJUEGOCONELCODO11 = '/findjuegoconelcodo1'
 SlashCmdList["FINDJUEGOCONELCODO1"] = findJuegoconelcodo1
+
+
+--LOOP--
+local locations = {
+	["1"] = {0.5084, 0.8818, 85}, --ORGRIMMAR
+	["2"] = {0.5084, 0.8818, 85}
+}
+
+fje_UpdateInterval = 10.0;
+function fje_OnUpdate(self, elapsed)
+  self.TimeSinceLastUpdate = self.TimeSinceLastUpdate + elapsed; 	
+
+  while (self.TimeSinceLastUpdate > fje_UpdateInterval) do
+
+  	--BUG AQUI??? COMPROBAR ESTE BUCLE
+  	for k, v in pairs(locations) do
+			print(k)
+			print(v)
+		end
+
+  	local targetLocX = 0.5084
+		local targetLocY = 0.8818
+		local targetLocInstance = 85 --ORGRIMMAR
+		mapID = C_Map.GetBestMapForUnit("player")
+		position = C_Map.GetPlayerMapPosition(mapID, "player");
+		posX, posY = position:GetXY()
+		distance = ComputeDistance(mapID, posY, posX, targetLocInstance, targetLocY, targetLocX)
+		if( distance == false ) then
+			print('Parece que todavía no estás en la zona correcta')
+		else
+			local playSound = false
+			if( distance <= margen1 and distance > margen2 ) then
+				print('Sientes una energía poderosa a lo lejos')
+			else
+				if( distance <= margen2 and distance > margen3) then
+					print('Todavía estás lejos del objetivo')
+					playSound = 'vs_chant_evoc_lf'
+				else
+					if( distance <= margen3 and distance > margen4 ) then
+						print('Te estás acercando, vigila tu espalda')
+						playSound = 'vs_chant_ench_hf_1'
+					else
+						if( distance <= margen4 and distance > margen5 ) then
+							print('La energía que emana de tu objetivo es tan fuerte que estás a punto de desmayarte')
+							playSound = 'vs_chant_necr_hf'
+						else
+							print('Felicidades! Has encontrado el objetivo de la primera ronda. Reclama tu premio')
+						end
+					end
+				end
+			end
+
+			if( playSound ~= false ) then
+				PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\"..playSound..".ogg", "Master")
+			end
+		end
+		self.TimeSinceLastUpdate = self.TimeSinceLastUpdate - fje_UpdateInterval;
+  end
+end
