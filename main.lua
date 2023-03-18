@@ -105,18 +105,19 @@ function findJuegoconelcodo1()
 
 		if( distance <= margen1 and distance > margen2 ) then
 			print('Sientes una energía poderosa a lo lejos, parece que estás en la zona correcta')
+			playRadar = "1"
 		else
 			if( distance <= margen2 and distance > margen3) then
 				print('Todavía estás lejos del objetivo')
-				playRadar = "1"
+				playRadar = "2"
 			else
 				if( distance <= margen3 and distance > margen4 ) then
 					print('Te estás acercando, presta atención a tus alrededores')
-					playRadar = "2"
+					playRadar = "3"
 				else
 					if( distance <= margen4 and distance > margen5 ) then
 						print('La energía que emana de tu objetivo es tan fuerte que estás a punto de desmayarte')
-						playRadar = "3"
+						playRadar = "4"
 					else
 						print('¡Felicidades! Has encontrado el objetivo de esta ronda. Reclama tu premio')
 						if( isPlayingFoundSound1 == false ) then
@@ -344,7 +345,7 @@ SlashCmdList["GETCURRENTLOC"] = getCurrentLoc
 --COMANDO CODOEVENTO--
 function toggleEvento()
 	if( startedEvent == false ) then
-		print('Addon activado, disfruta el evento :)')
+		print('Addon activado. Te recomendamos activar la música del juego. !Disfruta el evento! :)')
 		startedEvent = true
 	else
 		print('Addon desactivado')
