@@ -17,11 +17,13 @@ local isPlayingFoundSound2 = false
 local isPlayingFoundSound3 = false
 local isPlayingFoundSound4 = false
 local isPlayingFoundSound5 = false
+local isPlayingFoundSound6 = false
 local roundFinished1 = false
 local roundFinished2 = false
 local roundFinished3 = false
 local roundFinished4 = false
 local roundFinished5 = false
+local roundFinished6 = false
 
 local margen1 = 0.75
 local margen2 = 0.40
@@ -51,6 +53,8 @@ function fje_OnUpdate(self, elapsed)
   		findJuegoconelcodo4()
   	elseif( currentRound == "5" ) then
   		findJuegoconelcodo5()
+  	elseif( currentRound == "6" ) then
+  		findJuegoconelcodo6()
 		end
 
 		self.TimeSinceLastUpdate = self.TimeSinceLastUpdate - fje_UpdateInterval;
@@ -143,7 +147,7 @@ SlashCmdList["FINDJUEGOCONELCODO1"] = findJuegoconelcodo1
 function findJuegoconelcodo2()
 	if( roundFinished2 ~= false ) then return true end
 	distance = handleLoc()
-print('distance: '..distance)
+
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
 		stopBgMusic()
@@ -327,6 +331,53 @@ SLASH_FINDJUEGOCONELCODO51 = '/codo5'
 SlashCmdList["FINDJUEGOCONELCODO5"] = findJuegoconelcodo5
 
 
+--COMANDO FINDJUEGOCONELCODO6--
+function findJuegoconelcodo6()
+	if( roundFinished6 ~= false ) then return true end
+	distance = handleLoc()
+
+	if( distance == false ) then
+		print('Parece que todavía no estás en la zona correcta')
+		stopBgMusic()
+	else
+		local playRadar = false
+
+		startBgMusic()
+
+		if( distance <= margen1 and distance > margen2 ) then
+			print('Sientes una energía poderosa a lo lejos, parece que estás en la zona correcta')
+		else
+			if( distance <= margen2 and distance > margen3) then
+				print('Todavía estás lejos del objetivo')
+				playRadar = "1"
+			else
+				if( distance <= margen3 and distance > margen4 ) then
+					print('Te estás acercando, presta atención a tus alrededores')
+					playRadar = "2"
+				else
+					if( distance <= margen4 and distance > margen5 ) then
+						print('La energía que emana de tu objetivo es tan fuerte que estás a punto de desmayarte')
+						playRadar = "3"
+					else
+						print('¡Felicidades! Has encontrado el objetivo de esta ronda. Reclama tu premio')
+						if( isPlayingFoundSound6 == false ) then
+							isPlayingFoundSound6 = true
+							roundFinished6 = true
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+						end
+					end
+				end
+			end
+		end
+
+		handleRadar(playRadar)
+	end
+end
+
+SLASH_FINDJUEGOCONELCODO21 = '/codo2'
+SlashCmdList["FINDJUEGOCONELCODO2"] = findJuegoconelcodo2
+
+
 --COMANDO GETCURRENTLOC--
 function getCurrentLoc()
 	mapID = C_Map.GetBestMapForUnit("player")
@@ -416,3 +467,15 @@ function setRonda5()
 end
 SLASH_SETRONDA51 = '/codoronda5'
 SlashCmdList["SETRONDA5"] = setRonda5
+
+
+--COMANDO SETRONDA6--
+function setRonda5()
+	print('Ronda 6 comenzada. ¡Buena suerte!')
+	isPlayingFoundSound6 = false
+	roundFinished6 = false
+	currentRound = "6"
+	stopBgMusic()
+end
+SLASH_SETRONDA61 = '/codoronda6'
+SlashCmdList["SETRONDA6"] = setRonda6
