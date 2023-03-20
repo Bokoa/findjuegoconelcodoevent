@@ -1,10 +1,11 @@
 --VARIABLES--
 local locations = {
-	["1"] = {0.5084, 0.8818, 85}, -- ORGRIMMAR
-	["2"] = {0.4223, 0.1221, 1}, -- DUROTA (FUERA DE ORGRIMMAR)
-	["3"] = {0.5084, 0.8818, 85},
-	["4"] = {0.5084, 0.8818, 85},
-	["5"] = {0.5084, 0.8818, 85}
+	["1"] = {0.5084, 0.8818, 85}, -- CRATER DE UNGORO
+	["2"] = {0.1802, 0.5328, 2023}, -- DF
+	["3"] = {0.4277082974701, 0.83660608530045, 120}, -- LK
+	["4"] = {0.31295758485794, 0.68006551265717, 422}, -- PANDARIA: DESIERTO PAVOR
+	["5"] = {0.55672383308411, 0.36167871952057, 864}, -- BFA: VOLDUM
+	["6"] = {0.5084, 0.8818, 85} -- ORGRIMMAR
 }
 local startedEvent = false
 local currentRound = "1"
@@ -123,7 +124,7 @@ function findJuegoconelcodo1()
 						if( isPlayingFoundSound1 == false ) then
 							isPlayingFoundSound1 = true
 							roundFinished1 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Master")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
@@ -142,7 +143,7 @@ SlashCmdList["FINDJUEGOCONELCODO1"] = findJuegoconelcodo1
 function findJuegoconelcodo2()
 	if( roundFinished2 ~= false ) then return true end
 	distance = handleLoc()
-
+print('distance: '..distance)
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
 		stopBgMusic()
@@ -170,7 +171,7 @@ function findJuegoconelcodo2()
 						if( isPlayingFoundSound2 == false ) then
 							isPlayingFoundSound2 = true
 							roundFinished2 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Master")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
