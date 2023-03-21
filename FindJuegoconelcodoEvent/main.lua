@@ -496,7 +496,7 @@ SlashCmdList["SETRONDA5"] = setRonda5
 
 
 --COMANDO SETRONDA6--
-function setRonda5()
+function setRonda6()
 	print('Ronda 6 comenzada. ¡Buena suerte!')
 	isPlayingFoundSound6 = false
 	roundFinished6 = false
