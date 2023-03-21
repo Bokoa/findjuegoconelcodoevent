@@ -1,14 +1,14 @@
 --VARIABLES--
 local locations = {
-	["1"] = {0.5084, 0.8818, 85}, -- CRATER DE UNGORO
-	["2"] = {0.1802, 0.5328, 2023}, -- DF
+	["1"] = {0.49953138828278, 0.50501298904419, 78}, -- CRATER DE UNGORO
+	["2"] = {0.18051981925964, 0.53179061412811, 2023}, -- DF
 	["3"] = {0.4277082974701, 0.83660608530045, 120}, -- LK
 	["4"] = {0.31295758485794, 0.68006551265717, 422}, -- PANDARIA: DESIERTO PAVOR
 	["5"] = {0.55672383308411, 0.36167871952057, 864}, -- BFA: VOLDUM
 	["6"] = {0.5084, 0.8818, 85} -- ORGRIMMAR
 }
 local startedEvent = false
-local currentRound = "1"
+local currentRound = "3"
 local fje_UpdateInterval = 6.0
 local isPlayingRadar = false
 local isPlayingBgMusic = false
@@ -100,6 +100,12 @@ function findJuegoconelcodo1()
 	if( roundFinished1 ~= false ) then return true end
 	distance = handleLoc()
 
+	margen1 = 0.400
+	margen2 = 0.200
+	margen3 = 0.100
+	margen4 = 0.05
+	margen5 = 0.025
+
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
 		stopBgMusic()
@@ -126,9 +132,9 @@ function findJuegoconelcodo1()
 					else
 						print('¡Felicidades! Has encontrado el objetivo de esta ronda. Reclama tu premio')
 						if( isPlayingFoundSound1 == false ) then
-							isPlayingFoundSound1 = true
-							roundFinished1 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+							--isPlayingFoundSound1 = true
+							--roundFinished1 = true
+							--PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
@@ -147,6 +153,12 @@ SlashCmdList["FINDJUEGOCONELCODO1"] = findJuegoconelcodo1
 function findJuegoconelcodo2()
 	if( roundFinished2 ~= false ) then return true end
 	distance = handleLoc()
+
+	margen1 = 0.1800
+	margen2 = 0.1200
+	margen3 = 0.0600
+	margen4 = 0.0320
+	margen5 = 0.0105
 
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
@@ -194,6 +206,13 @@ SlashCmdList["FINDJUEGOCONELCODO2"] = findJuegoconelcodo2
 function findJuegoconelcodo3()
 	if( roundFinished3 ~= false ) then return true end
 	distance = handleLoc()
+print(distance)
+
+	margen1 = 0.1200
+	margen2 = 0.0800
+	margen3 = 0.0400
+	margen4 = 0.0200
+	margen5 = 0.0035
 
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
@@ -288,6 +307,7 @@ SlashCmdList["FINDJUEGOCONELCODO4"] = findJuegoconelcodo4
 function findJuegoconelcodo5()
 	if( roundFinished5 ~= false ) then return true end
 	distance = handleLoc()
+	distance = distance * 10
 
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
