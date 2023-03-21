@@ -8,7 +8,7 @@ local locations = {
 	["6"] = {0.5084, 0.8818, 85} -- ORGRIMMAR
 }
 local startedEvent = false
-local currentRound = "3"
+local currentRound = "1"
 local fje_UpdateInterval = 6.0
 local isPlayingRadar = false
 local isPlayingBgMusic = false
@@ -132,9 +132,9 @@ function findJuegoconelcodo1()
 					else
 						print('¡Felicidades! Has encontrado el objetivo de esta ronda. Reclama tu premio')
 						if( isPlayingFoundSound1 == false ) then
-							--isPlayingFoundSound1 = true
-							--roundFinished1 = true
-							--PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+							isPlayingFoundSound1 = true
+							roundFinished1 = true
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
@@ -260,6 +260,12 @@ SlashCmdList["FINDJUEGOCONELCODO3"] = findJuegoconelcodo3
 function findJuegoconelcodo4()
 	if( roundFinished4 ~= false ) then return true end
 	distance = handleLoc()
+
+	margen1 = 0.2500
+	margen2 = 0.2000
+	margen3 = 0.1400
+	margen4 = 0.0800
+	margen5 = 0.0158
 
 	if( distance == false ) then
 		print('Parece que todavía no estás en la zona correcta')
@@ -417,7 +423,7 @@ SlashCmdList["GETCURRENTLOC"] = getCurrentLoc
 --COMANDO CODOEVENTO--
 function toggleEvento()
 	if( startedEvent == false ) then
-		print('Addon activado. Te recomendamos activar la música del juego. !Disfruta el evento! :)')
+		message('Addon activado. Te recomendamos activar la música del juego. !Disfruta el evento! :)')
 		startedEvent = true
 	else
 		print('Addon desactivado')
