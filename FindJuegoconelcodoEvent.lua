@@ -63,7 +63,7 @@ end
 
 function handleRadar(playRadar)
 	if( playRadar ~= false and isPlayingRadar == false ) then
-		local willPlay, soundHandle = PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\sonar"..playRadar..".mp3", "Master")
+		local willPlay, soundHandle = PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sonar"..playRadar..".mp3", "Master")
 		playRadar = false
 	end
 end
@@ -84,7 +84,7 @@ end
 function startBgMusic()
 	if( isPlayingBgMusic == false ) then
 		isPlayingBgMusic = true
-		PlayMusic("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\bg_music.mp3", "Master")
+		PlayMusic("Interface\\Addons\\FindJuegoconelcodoEvent\\bg_music.mp3", "Master")
 	end
 end
 
@@ -134,7 +134,7 @@ function findJuegoconelcodo1()
 						if( isPlayingFoundSound1 == false ) then
 							isPlayingFoundSound1 = true
 							roundFinished1 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
@@ -187,7 +187,7 @@ function findJuegoconelcodo2()
 						if( isPlayingFoundSound2 == false ) then
 							isPlayingFoundSound2 = true
 							roundFinished2 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
@@ -241,7 +241,7 @@ print(distance)
 						if( isPlayingFoundSound3 == false ) then
 							isPlayingFoundSound3 = true
 							roundFinished3 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Master")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Master")
 						end
 					end
 				end
@@ -294,7 +294,7 @@ function findJuegoconelcodo4()
 						if( isPlayingFoundSound4 == false ) then
 							isPlayingFoundSound4 = true
 							roundFinished4 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Master")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Master")
 						end
 					end
 				end
@@ -342,7 +342,7 @@ function findJuegoconelcodo5()
 						if( isPlayingFoundSound5 == false ) then
 							isPlayingFoundSound5 = true
 							roundFinished5 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Master")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Master")
 						end
 					end
 				end
@@ -389,7 +389,7 @@ function findJuegoconelcodo6()
 						if( isPlayingFoundSound6 == false ) then
 							isPlayingFoundSound6 = true
 							roundFinished6 = true
-							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\sounds\\agradecer_vida.mp3", "Dialog")
+							PlaySoundFile("Interface\\Addons\\FindJuegoconelcodoEvent\\agradecer_vida.mp3", "Dialog")
 						end
 					end
 				end
